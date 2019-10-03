@@ -1,4 +1,7 @@
-" Use sys clipboard reg
+" Dont open vi open in vim
+set nocompatible
+
+" Use sys clipboard register
 set clipboard=unnamed
 
 " Enable filetype plugins
@@ -11,8 +14,20 @@ set autoread
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
-" Turn on the WiLd menu
+" FINDING FILES:
+" Search down into subfolders
+" Provides tab-completion for all file-related tasks
+set path+=**
+
+" Turn on the WiLd menu which displays all matching files when we tab complete
 set wildmenu
+
+" NOW WE CAN:
+" - Hit tab to :find by partial match
+" - Use * to make it fuzzy
+
+" THINGS TO CONSIDER:
+" - :b lets you autocomplete any open buffer
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
@@ -28,11 +43,11 @@ set ruler
 " line numbers
 set nu
 
-" set column width to be 80 chars
+" set column width to be 72 chars
 set colorcolumn=72
 
 " Height of the command bar
-set cmdheight=2
+set cmdheight=1
 
 " A buffer becomes hidden when it is abandoned
 set hid
@@ -65,12 +80,8 @@ set showmatch
 " Enable syntax highlighting
 syntax enable
 
-try
-    colorscheme peachpuff
-catch
-endtry
-
 set background=dark
+colorscheme peachpuff
 
 " Always show the status line
 set laststatus=2
@@ -86,11 +97,11 @@ function! HasPaste()
     return ''
 endfunction
 
-function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
-endfunction
+"function! CmdLine(str)
+"    exe "menu Foo.Bar :" . a:str
+"    emenu Foo.Bar
+"    unmenu Foo
+"endfunction
 
 " Performace increase by clearing buffs
 if version >= 702
@@ -124,4 +135,27 @@ augroup resCur
   autocmd BufWinEnter * call ResCur()
 augroup END
 
+set ai "Auto indent
+set si "Smart indent
+set wrap "Wrap lines
+
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
+" Use spaces related stuff
+set tabstop=2     " Size of a hard tabstop (ts).
+set shiftwidth=2  " Size of an indentation (sw).
+set expandtab     " Always uses spaces instead of tab characters (et).
+set softtabstop=0 " Number of spaces a <Tab> counts for. When 0, featuer is off (sts).
+set autoindent    " Copy indent from current line when starting a new line.
+set smarttab      " Inserts blanks on a <Tab> key (as per sw, ts and sts).
+
+" Use tab related stuff
+" set tabstop=4     " Size of a hard tabstop (ts).
+" set shiftwidth=4  " Size of an indentation (sw).
+" set noexpandtab   " Always uses tabs instead of space characters (noet).
+" set autoindent    " Copy indent from current line when starting a new line (ai).
 
