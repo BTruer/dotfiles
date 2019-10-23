@@ -153,9 +153,12 @@ set softtabstop=0 " Number of spaces a <Tab> counts for. When 0, featuer is off 
 set autoindent    " Copy indent from current line when starting a new line.
 set smarttab      " Inserts blanks on a <Tab> key (as per sw, ts and sts).
 
-" Use tab related stuff
-" set tabstop=4     " Size of a hard tabstop (ts).
-" set shiftwidth=4  " Size of an indentation (sw).
-" set noexpandtab   " Always uses tabs instead of space characters (noet).
-" set autoindent    " Copy indent from current line when starting a new line (ai).
+
+" https://vi.stackexchange.com/questions/9131/i-cant-switch-to-cursor-in-insert-mode
+let &t_SI = "\<esc>[5 q"
+let &t_SR = "\<esc>[5 q"
+let &t_EI = "\<esc>[1 q"
+
+
+
 
